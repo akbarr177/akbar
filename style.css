@@ -4,3 +4,13 @@
 @media(max-width:1150px){.game-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.game-art{height:150px}.contact-panel{grid-template-columns:1fr 1.2fr}.thank-you{display:none}.hero-art{transform:scale(.9)}}
 @media(max-width:760px){.topbar{height:65px;padding:0 18px}.brand{font-size:21px;gap:6px}.brand-icon{font-size:27px}.topbar nav{gap:13px;font-size:12px}.nav-link{padding:24px 0}.theme-toggle{width:39px;height:38px;font-size:16px}.hero{grid-template-columns:1fr;padding:36px 22px 24px}.hero-art{height:175px;transform:scale(.8);margin-top:2px}.hero h1{font-size:47px}.hero h2{font-size:18px}.hero p{font-size:14px}.hero-stats{margin-top:18px}.section-wrap{width:calc(100% - 32px)}.section-heading{align-items:flex-start}.section-heading h2{font-size:22px}.game-count{font-size:8px;padding:7px;margin-top:18px}.game-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.game-art{height:115px}.card-title h3{font-size:14px}.card-content p{font-size:11px;min-height:62px}.about{grid-template-columns:50px 1fr;padding:18px;gap:12px}.about-icon{width:47px;height:47px;font-size:23px}.about h2{font-size:18px}.about p{font-size:12px}.about-points{grid-column:2;display:grid;grid-template-columns:1fr;font-size:11px}.contact-panel{grid-template-columns:1fr;padding:20px;gap:18px}.contact-left{border-right:0;border-bottom:1px solid #2b466b;padding:0 0 18px}.contact-right h3{font-size:15px}.socials{flex-direction:column}.social{width:100%}footer{flex-wrap:wrap;justify-content:center;text-align:center}footer>span{order:3;width:100%}.game-modal{padding:23px 17px}.memory-card{height:55px}}
 @media(max-width:410px){.topbar nav{gap:9px;font-size:11px}.brand{font-size:18px}.brand-icon{font-size:23px}.theme-toggle{width:33px;height:34px}.hero h1{font-size:40px}.game-art{height:100px}.number-tiles b{width:23px;height:32px;font-size:18px}.rps-symbols b{width:39px;height:39px;font-size:21px}.memory-symbols{grid-template-columns:repeat(3,30px)}.memory-symbols b{height:27px}.section-heading p{font-size:12px}.game-count{max-width:85px}.hero-art{transform:scale(.7);margin:-8px 0}.hero-stats{gap:24px}}
+
+/* Perbaikan ikon kontak: gunakan ikon WhatsApp, bukan email */
+.whatsapp-contact-icon { background: linear-gradient(140deg,#20c875,#07976b); color: #fff; }
+.whatsapp-contact-icon svg { width: 34px; height: 34px; display: block; }
+
+/* Runner: lompat hanya jika pemain menekan tombol / Space */
+.runner-box.running .runner-avatar { animation: none !important; }
+.runner-avatar.manual-jump { animation: none !important; transform: translateY(-58px) !important; transition: transform .16s ease-out; }
+.runner-avatar:not(.manual-jump) { transition: transform .16s ease-in; }
+.runner-box.running .obstacle { animation: none !important; }

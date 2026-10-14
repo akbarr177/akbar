@@ -53,20 +53,42 @@ function renderMemory(){
  $('#memoryRestart').addEventListener('click',renderMemory);
 }
 function renderRunner(){
- shell(`<p>Tekan tombol <b>LOMPAT</b> untuk melewati rintangan. Game ini versi mini—kejar skor setinggi mungkin!</p><div class="runner-box" id="runnerBox"><div class="runner-avatar">🏃</div><div class="obstacle">🪨</div></div><p>Skor: <b id="runnerScore">0</b></p><button class="game-action" id="jumpBtn">⬆ LOMPAT</button><button class="game-action" id="runnerStart">▶ Mulai / Ulang</button><div class="game-message" id="runnerMsg">Tekan Mulai untuk bermain.</div>`);
- let running=false,score=0,timer=null,hopTimeout=null,jumping=false;
- const box=$('#runnerBox'),avatar=$('.runner-avatar',box),obstacle=$('.obstacle',box);
- function stop(){running=false;clearInterval(timer);clearTimeout(hopTimeout);box.classList.remove('running')}
- function jump(){if(!running||jumping)return;jumping=true;avatar.style.transform='translateY(-55px)';hopTimeout=setTimeout(()=>{avatar.style.transform='';jumping=false},420)}
+ shell(`<p>Tekan <b>LOMPAT</b> saat rintangan mendekat. Karakter tidak akan melompat otomatis!</p><div class="runner-box" id="runnerBox"><div class="runner-avatar" id="runnerAvatar">🏃</div><div class="obstacle" id="runnerObstacle">🪨</div></div><p>Skor: <b id="runnerScore">0</b> &nbsp; · &nbsp; Rekor sesi: <b id="runnerBest">0</b></p><button class="game-action" id="jumpBtn" disabled>⬆ LOMPAT (Space)</button><button class="game-action" id="runnerStart">▶ Mulai / Ulang</button><div class="game-message" id="runnerMsg">Tekan Mulai untuk bermain.</div>`);
+ let running=false, score=0, best=0, obstacleX=100, obstacleSpeed=2.4, jumping=false, jumpTimer=null, loop=null, lastTick=0;
+ const box=$('#runnerBox'), avatar=$('#runnerAvatar'), obstacle=$('#runnerObstacle'), jumpBtn=$('#jumpBtn');
+ function stopGame(msg=''){running=false;clearInterval(loop);clearTimeout(jumpTimer);box.classList.remove('running');jumpBtn.disabled=true;if(msg)$('#runnerMsg').textContent=msg}
+ function jump(){
+   if(!running||jumping)return;
+   jumping=true;avatar.classList.add('manual-jump');
+   jumpTimer=setTimeout(()=>{avatar.classList.remove('manual-jump');jumping=false},520);
+ }
+ function tick(){
+   if(!running)return;
+   obstacleX-=obstacleSpeed;
+   if(obstacleX < -12){obstacleX=104;score+=1;$('#runnerScore').textContent=score;obstacleSpeed=Math.min(4.6,2.4+score*.035)}
+   obstacle.style.left=obstacleX+'%';obstacle.style.right='auto';
+   // Periksa tabrakan hanya saat rintangan berada dekat karakter dan karakter belum melompat.
+   if(obstacleX>13&&obstacleX<29&&!jumping){
+     stopGame(`💥 Rintangan terkena! Skor kamu ${score}. Tekan Mulai / Ulang untuk mencoba lagi.`);
+     return;
+   }
+   if(score>best){best=score;$('#runnerBest').textContent=best}
+ }
  $('#jumpBtn').addEventListener('click',jump);
- $('#runnerStart').addEventListener('click',()=>{stop();score=0;$('#runnerScore').textContent='0';$('#runnerMsg').textContent='Lompat sebelum rintangan datang!';running=true;box.classList.add('running');timer=setInterval(()=>{score++;$('#runnerScore').textContent=score;if(score%8===0)$('#runnerMsg').textContent='Mantap! Terus berlari!'},500);});
- const key=e=>{if(e.code==='Space'&&modal.classList.contains('show')){e.preventDefault();jump()}};
+ $('#runnerStart').addEventListener('click',()=>{
+   stopGame();score=0;obstacleX=100;obstacleSpeed=2.4;jumping=false;
+   avatar.classList.remove('manual-jump');avatar.style.transform='';
+   obstacle.style.left=obstacleX+'%';obstacle.style.right='auto';
+   $('#runnerScore').textContent='0';$('#runnerMsg').textContent='Lompat secara manual saat batu mendekat!';
+   running=true;box.classList.add('running');jumpBtn.disabled=false;loop=setInterval(tick,35);
+ });
+ const key=e=>{if(e.code==='Space'&&modal.classList.contains('show')&&running){e.preventDefault();jump()}};
  document.addEventListener('keydown',key);
- cleanupGame=()=>{stop();document.removeEventListener('keydown',key)};
+ cleanupGame=()=>{stopGame();document.removeEventListener('keydown',key)};
 }
 function renderTetris(){
  let grid=Array(200).fill(0),score=0,ended=false,timer=null;
- const shapes=[[[1,1,1,1]],[[1,1],[1,1]],[[0,1,0],[1,1,1]],[[1,0,0],[1,1,1]],[[0,0,1],[1,1,1]]];
+ const shapes=[[[1,1,1,1]],[[1,1],[1,1]],[[0,1,0],[1,1,1]],[[1,0,0],[1,1,1]],[[0,0,1],[1,1,1]],[[1,1,0],[0,1,1]],[[0,1,1],[1,1,0]]];
  let shape=shapes[Math.floor(Math.random()*shapes.length)],x=3,y=0;
  function cells(){let out=[];shape.forEach((row,dy)=>row.forEach((v,dx)=>{if(v)out.push([x+dx,y+dy])}));return out}
  function valid(nx,ny,sh=shape){return sh.every((row,dy)=>row.every((v,dx)=>!v||(nx+dx>=0&&nx+dx<10&&ny+dy<20&&(ny+dy<0||!grid[(ny+dy)*10+nx+dx]))))}
