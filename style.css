@@ -14,3 +14,7 @@
 .runner-avatar.manual-jump { animation: none !important; transform: translateY(-58px) !important; transition: transform .16s ease-out; }
 .runner-avatar:not(.manual-jump) { transition: transform .16s ease-in; }
 .runner-box.running .obstacle { animation: none !important; }
+
+/* Follow media sosial: Instagram saja, WhatsApp tetap di bagian Hubungi Saya */
+.contact-right .socials { justify-content: flex-start; }
+.contact-right .socials .instagram { flex: 0 1 320px; }
