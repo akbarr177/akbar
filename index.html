@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080f20">
+  <title>PLAYZONE — Mini Game Seru</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#beranda" aria-label="Playzone beranda"><span class="brand-icon">🎮</span><span>PLAY<span>ZONE</span></span></a>
+    <nav>
+      <a class="nav-link active" href="#beranda">Beranda</a>
+      <a class="nav-link" href="#game">Game</a>
+      <a class="nav-link" href="#tentang">Tentang</a>
+      <a class="nav-link" href="#kontak">Kontak</a>
+    </nav>
+    <button id="themeToggle" class="theme-toggle" aria-label="Ganti tema">☀️</button>
+  </header>
+
+  <main>
+    <section class="hero" id="beranda">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="live-dot"></span> ARCADE MINI GAME ONLINE</div>
+        <h1>PLAY<span>ZONE</span> <span class="hero-pad">🎮</span></h1>
+        <h2>Kumpulan Mini Game Seru, Langsung Main di Browser!</h2>
+        <p>Nikmati berbagai permainan ringan yang bisa kamu mainkan kapan saja, di mana saja. Tantang dirimu, raih skor tertinggi, dan bersenang-senang!</p>
+        <a class="primary-btn" href="#game">▶ &nbsp; Mulai Bermain</a>
+        <div class="hero-stats"><div><strong>06</strong><small>Mini Game</small></div><div><strong>100%</strong><small>Gratis</small></div><div><strong>0</strong><small>Download</small></div></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="spark spark-a">✦</div><div class="spark spark-b">＋</div><div class="spark spark-c">△</div>
+        <div class="big-controller"><div class="dpad"><i></i><b></b><em></em><strong></strong></div><div class="stick"></div><div class="buttons"><i></i><b></b><em></em><strong></strong></div><div class="center-lines">━ ━</div></div>
+        <div class="hand-note">Main sekarang<br>juga! ↙</div>
+      </div>
+    </section>
+
+    <section class="games-section section-wrap" id="game">
+      <div class="section-heading"><div><div class="eyebrow">PILIH PETUALANGANMU</div><h2>🎮 Daftar Game</h2><p>Pilih game favoritmu dan mulai petualangan seru!</p></div><div class="game-count"><span id="gameCount">06</span> GAME TERSEDIA</div></div>
+      <div class="game-grid">
+        <article class="game-card" style="--accent:#8b5cf6;--glow:rgba(139,92,246,.2)">
+          <div class="game-art number-art"><span class="tag">🔥 Populer</span><div class="number-tiles"><b>1</b><b>2</b><b>3</b><b>4</b><b>5</b></div><span class="art-stars">✦　✧　✦</span></div>
+          <div class="card-content"><div class="card-title"><h3>Tebak Angka</h3><span class="mini-icon">01</span></div><p>Tebak angka rahasia dari 1–100. Bisa berapa tebakan kamu?</p><button class="play-btn" data-game="number">▶ &nbsp; Mainkan</button></div>
+        </article>
+        <article class="game-card" style="--accent:#10b981;--glow:rgba(16,185,129,.18)">
+          <div class="game-art word-art"><span class="tag">★ Seru</span><div class="word-symbol">_ A K _</div><div class="hangman">♙</div><span class="art-stars">✦　✧　✦</span></div>
+          <div class="card-content"><div class="card-title"><h3>Tebak Kata</h3><span class="mini-icon">02</span></div><p>Tebak kata yang tersembunyi dengan petunjuk yang ada.</p><button class="play-btn" data-game="word">▶ &nbsp; Mainkan</button></div>
+        </article>
+        <article class="game-card" style="--accent:#7c3aed;--glow:rgba(124,58,237,.2)">
+          <div class="game-art rps-art"><span class="tag">🔥 Populer</span><div class="rps-symbols"><b>✊</b><b>✋</b><b>✌️</b></div><span class="art-stars">✦　✧　✦</span></div>
+          <div class="card-content"><div class="card-title"><h3>Batu Gunting Kertas</h3><span class="mini-icon">03</span></div><p>Siapkan strategi terbaikmu! Siapa yang menang?</p><button class="play-btn" data-game="rps">▶ &nbsp; Mainkan</button></div>
+        </article>
+        <article class="game-card" style="--accent:#f97316;--glow:rgba(249,115,22,.2)">
+          <div class="game-art memory-art"><span class="tag">★ Menantang</span><div class="memory-symbols"><b>⭐</b><b>🌟</b><b>🐰</b><b>🌙</b><b>💜</b><b>🐱</b></div><span class="art-stars">✦　✧　✦</span></div>
+          <div class="card-content"><div class="card-title"><h3>Game Memori</h3><span class="mini-icon">04</span></div><p>Cocokkan kartu yang sama dalam waktu terbatas. Fokus dan ingat!</p><button class="play-btn" data-game="memory">▶ &nbsp; Mainkan</button></div>
+        </article>
+        <article class="game-card" style="--accent:#22c55e;--glow:rgba(34,197,94,.18)">
+          <div class="game-art runner-art"><span class="tag">★ Seru</span><div class="sun"></div><div class="runner-person">🏃</div><div class="platforms"><i></i><i></i><i></i><i></i></div><div class="coins">●　●　●</div></div>
+          <div class="card-content"><div class="card-title"><h3>Runner</h3><span class="mini-icon">05</span></div><p>Lari sejauh mungkin, hindari rintangan dan kumpulkan poin!</p><button class="play-btn" data-game="runner">▶ &nbsp; Mainkan</button></div>
+        </article>
+        <article class="game-card" style="--accent:#0ea5e9;--glow:rgba(14,165,233,.18)">
+          <div class="game-art tetris-art"><span class="tag">★ Strategi</span><div class="blocks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="card-content"><div class="card-title"><h3>Tetris Mini</h3><span class="mini-icon">06</span></div><p>Susun balok dengan rapi dan jangan sampai penuh! Raih skor tinggi.</p><button class="play-btn" data-game="tetris">▶ &nbsp; Mainkan</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="about section-wrap" id="tentang">
+      <div class="about-icon">⚡</div><div><div class="eyebrow">TENTANG PLAYZONE</div><h2>Game kecil, keseruan besar.</h2><p>PLAYZONE adalah tempat bermain mini game langsung dari browser. Tidak perlu install aplikasi atau membuat akun — tinggal pilih game, lalu mainkan!</p></div>
+      <div class="about-points"><span>✓ Gratis dimainkan</span><span>✓ Ramah perangkat</span><span>✓ Bisa di HP & komputer</span></div>
+    </section>
+
+    <section class="contact-panel section-wrap" id="kontak">
+      <div class="contact-left"><div class="contact-icon">✉</div><div><h2>Hubungi Saya</h2><p>Jika ada pertanyaan, saran, atau ingin bekerja sama,<br class="desktop-only"> jangan ragu untuk menghubungi saya.</p><a class="contact-button" href="https://wa.me/6285719504047" target="_blank" rel="noopener">◉ &nbsp; Chat Sekarang <span>↗</span></a></div></div>
+      <div class="contact-right"><h3>Ikuti Saya di Media Sosial</h3><p>Jangan lupa follow untuk update terbaru, konten menarik,<br class="desktop-only"> dan hal-hal seru lainnya!</p><div class="socials"><a class="social whatsapp" href="https://wa.me/6285719504047" target="_blank" rel="noopener"><span class="social-logo">◉</span><span><small>WhatsApp</small><strong>085719504047</strong></span><span class="arrow">↗</span></a><a class="social instagram" href="https://instagram.com/akbarrain_" target="_blank" rel="noopener"><span class="social-logo">◎</span><span><small>Instagram</small><strong>@akbarrain_</strong></span><span class="arrow">↗</span></a></div></div>
+      <div class="thank-you">Terima kasih<br> sudah berkunjung!<span>⌣</span></div>
+    </section>
+  </main>
+  <footer><a class="footer-brand" href="#beranda">🎮 PLAY<span>ZONE</span></a><span>© <span id="year"></span> PLAYZONE. Dibuat untuk bersenang-senang.</span><div><a href="#game">Main</a><i>·</i><a href="#tentang">Nikmati</a><i>·</i><a href="#kontak">Jadilah Juara</a></div></footer>
+
+  <div class="modal-backdrop" id="gameModal" aria-hidden="true">
+    <section class="game-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="closeModal" aria-label="Tutup">×</button>
+      <div class="eyebrow">PLAYZONE ARCADE</div><h2 id="modalTitle">Game</h2><div id="gameArea"></div>
+    </section>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
